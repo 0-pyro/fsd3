@@ -102,25 +102,6 @@ export const cartReducer = (state = initialCartState, action) => {
     }
 };
 
-// User Reducer
-const initialUserState = {
-    isLoggedIn: false,
-    user: null,
-    email: '',
-};
-
-export const userReducer = (state = initialUserState, action) => {
-    switch (action.type) {
-        case 'LOGIN':
-            return { ...state, isLoggedIn: true, user: action.payload.name, email: action.payload.email };
-        case 'LOGOUT':
-            return { isLoggedIn: false, user: null, email: '' };
-        case 'UPDATE_PROFILE':
-            return { ...state, user: action.payload.name, email: action.payload.email };
-        default:
-            return state;
-    }
-};
 
 // Filters Reducer
 const initialFiltersState = {
@@ -145,24 +126,6 @@ export const filtersReducer = (state = initialFiltersState, action) => {
     }
 };
 
-// Orders Reducer
-const initialOrdersState = {
-    orders: [],
-};
-
-export const ordersReducer = (state = initialOrdersState, action) => {
-    switch (action.type) {
-        case 'ADD_ORDER':
-            return {
-                ...state,
-                orders: [...state.orders, { ...action.payload, id: Date.now(), date: new Date().toLocaleDateString() }],
-            };
-        case 'GET_ORDERS':
-            return state;
-        default:
-            return state;
-    }
-};
 
 // Shoutbox Reducer
 const persistedShouts = typeof window !== 'undefined' && localStorage.getItem('shouts')
